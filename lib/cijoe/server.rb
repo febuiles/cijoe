@@ -27,7 +27,7 @@ class CIJoe
     end
 
     post '/?' do
-      payload = YAML.load(params[:payload].to_s) rescue { }
+      payload = YAML.load(params[:payload].to_s) || {}
       pushed_branch = payload['ref'].to_s.split('/').last
 
       # Only build if we were given an explicit branch via `?branch=blah`,
